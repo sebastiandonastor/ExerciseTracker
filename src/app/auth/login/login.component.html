@@ -1,0 +1,18 @@
+<section>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"
+    fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <mat-form-field>
+            <input type="email" matInput placeholder="Email" formControlName="email">
+            <mat-hint>Must be a valid email</mat-hint>
+            <mat-error *ngIf="loginForm.controls.email.errors?.required">Email must not be empty</mat-error>
+            <mat-error *ngIf="loginForm.controls.email.errors?.email">Email should be valid</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+                <input type="password" matInput placeholder="Password" formControlName="password">
+                <mat-error *ngIf="loginForm.controls.password.errors?.required">password must not be empty</mat-error>
+            </mat-form-field>
+
+       <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid && submitedOnce">Login</button>
+    </form>
+</section>
